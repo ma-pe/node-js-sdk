@@ -27,6 +27,7 @@ function Oneall(cfg) {
         "sso",
         "analytics",
         "provider",
+        "push",
         "discussion"
     ];
 
