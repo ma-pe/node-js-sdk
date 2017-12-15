@@ -1,4 +1,4 @@
-# general
+# General
 
 This is a fork of the greate oneall-nodejs-sdk (https://github.com/oneall/node-js-sdk). When forking this package the named sdk didn't feature the push-api. I therefore added *some* of the api-calls.
 
