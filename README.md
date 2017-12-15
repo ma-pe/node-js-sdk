@@ -871,19 +871,20 @@ Send a POST request to this resource to upload a picture to the respective socia
 
 ```js
 oneall.push.uploadPicture(
-identityToken,
-provider,
-{
-    attachments: [pictureId],
-    message: 'Test'
-},
-function (err, data, fullData) {
-  if (err) {
-      throw(err);
-  }
-  console.log('Meaningful data: ', data);
-  console.log('Full data: ', fullData);
-}
+    identityToken,
+    provider,
+    {
+        description: 'Image-Description',
+        url: 'some-image.jpg',
+        create_post: false
+    },
+    function (err, data, fullData) {
+        if (err) {
+            throw(err);
+        }
+        console.log('Meaningful data: ', data);
+        console.log('Full data: ', fullData);
+    }
 );
 ```
 
@@ -902,19 +903,19 @@ Send a POST request to this resource to publish a post to the respective social 
 
 ```js
 oneall.push.publishPost(
-  identityToken,
-  provider,
-  {
-      attachments,
-      message
-  },
-  function (err, data, fullData) {
-    if (err) {
-        throw(err);
+    identityToken,
+    provider,
+    {
+        attachments: [pictureId],
+        message: 'Test'
+    },
+    function (err, data, fullData) {
+        if (err) {
+            throw(err);
+        }
+        console.log('Meaningful data: ', data);
+        console.log('Full data: ', fullData);
     }
-    console.log('Meaningful data: ', data);
-    console.log('Full data: ', fullData);
-  }
 );
 ```
 
