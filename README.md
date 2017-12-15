@@ -1,3 +1,6 @@
+# general
+
+This is a fork of the greate oneall-nodejs-sdk (https://github.com/oneall/node-js-sdk). When forking this package the named sdk didn't feature the push-api. I therefore added *some* of the api-calls.
 
 # oneall-sdk
 An sdk that maps the Oneall REST API into nodejs.
@@ -825,7 +828,7 @@ Send a PUT request to the following resource to create a new SSO session for a u
   - `callback` method to be executed that will receive as argument the error, data and fullData
 
   **Optional Arguments**
- 
+
   - `opts.top_realm` A string to specify the primary realm of this SSO session.
   - `opts.sub_realm` A string to specify the secondary realm of this SSO session.
   - `opts.lifetime` A numeric value that represents the lifetime of the SSO session in seconds.
@@ -839,7 +842,7 @@ Send a PUT request to the following resource to create a new SSO session for a u
 ### oneall.provider.getAll(callback)
 
 Send a GET request to this resource to retrieve a list of configured providers.
- 
+
   ```js
   oneall.provider.getAll(
     function (err, data, fullData) {
@@ -857,3 +860,67 @@ Send a GET request to this resource to retrieve a list of configured providers.
   - `callback` method to be executed that will receive as argument the error, data and fullData
 
 
+
+
+## push
+
+
+### oneall.push.uploadPicture(identityToken, provider, { description, url, create_post }, callback)
+
+Send a POST request to this resource to upload a picture to the respective social network and receive an answer according to (https://docs.oneall.com/api/resources/push/facebook/picture/ and https://docs.oneall.com/api/resources/push/twitter/picture/).
+
+```js
+oneall.push.uploadPicture(
+identityToken,
+provider,
+{
+    attachments: [pictureId],
+    message: 'Test'
+},
+function (err, data, fullData) {
+  if (err) {
+      throw(err);
+  }
+  console.log('Meaningful data: ', data);
+  console.log('Full data: ', fullData);
+}
+);
+```
+
+**Arguments:**
+
+- `identityToken` The token of the identity that should be used to login.
+- `provider` social network ('twitter' or 'facebook')
+- `{ attachments, message }` parts according to https://docs.oneall.com/api/resources/push/facebook/picture/ and https://docs.oneall.com/api/resources/push/twitter/picture/
+- `callback` method to be executed that will receive as argument the error, data and fullData
+
+
+
+### oneall.push.publishPost(identityToken, provider, { attachments, message }, callback)
+
+Send a POST request to this resource to publish a post to the respective social network and receive an answer according to (https://docs.oneall.com/api/resources/push/twitter/post/ and https://docs.oneall.com/api/resources/push/facebook/post/).
+
+```js
+oneall.push.publishPost(
+  identityToken,
+  provider,
+  {
+      attachments,
+      message
+  },
+  function (err, data, fullData) {
+    if (err) {
+        throw(err);
+    }
+    console.log('Meaningful data: ', data);
+    console.log('Full data: ', fullData);
+  }
+);
+```
+
+**Arguments:**
+
+- `identityToken` The token of the identity that should be used to login.
+- `provider` social network ('twitter' or 'facebook')
+- `{ attachments, message }` parts according to https://docs.oneall.com/api/resources/push/twitter/post/ and https://docs.oneall.com/api/resources/push/facebook/post/
+- `callback` method to be executed that will receive as argument the error, data and fullData
